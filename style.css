@@ -1,0 +1,14 @@
+body{
+    background-color: #ccc;
+    margin: 0;
+}
+.wrap{
+    width: 35%;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+.wrap img{
+    width: 90%;
+    padding: 40px;
+}
