@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 450px;
+            position: relative;
+            /* 對位基準點 */
+        }
+
+        #nav {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            z-index: 99;
+        }
+
+        #nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0;
+            margin-left: 20px;
+            border: 1px solid #fff;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+
+        }
+
+        /* 作用中的數字底色會被改變 */
+        #nav a.activeSlide {
+            background-color: rgb(43, 255, 0);
+        }
+    </style>
+
+    <!-- 步驟1：載入React, Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect } = React;
+
+        function App() {
+            useEffect(() => {
+                $(function () {
+                    //jQuery環境簡寫
+                    $('#imgCycle').after('<div id="nav"><div>').cycle({
+                        fx: 'fade',
+                        timeout: 500,//速度
+                        delay: 2000,//停留時間
+                        pager: '#nav',
+                    });
+                });
+            }, []);
+            return (
+                <div>
+                    <h1>自動輪播+輪播紐</h1>
+                    <div class="box">
+                        <div id="imgCycle">
+                            <img src="https://images.unsplash.com/photo-1725203574059-389c2116aad1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                            <img src="https://plus.unsplash.com/premium_photo-1724121437148-7d87478f505e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                            <img src="https://images.unsplash.com/photo-1721332149274-586f2604884d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                            <img src="https://images.unsplash.com/photo-1725006705457-169c2b2ef62f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMnx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                            <img src="https://images.unsplash.com/photo-1724747891638-68862b7b3165?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                        </div>
+                    </div>
+
+                </div>
+            )
+        }
+
+
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+    <!-- jQuery主程式 -->
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <!-- 輪播主程式 -->
+    <script src="./js/jquery.cycle.all.js"></script>
+</body>
+
+</html>
